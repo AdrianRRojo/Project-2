@@ -51,8 +51,9 @@ app.get('/', (req,res) => {
 // controllers
 
 app.use('/users', require('./controllers/users'))
-app.use('/player', require('./controllers/players'))
+app.use('/player', require('./controllers/players.js'))
 app.use('/matches', require('./controllers/matches'))
+app.use('/comments', require('/controllers/comments'))
 //listen on a port
 
 app.listen(PORT, ()=> {
