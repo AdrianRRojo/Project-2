@@ -1,9 +1,20 @@
-<h1>Scotland Premiership search</h1>
-<p>Search for a team below...</p>
 
-<form method="GET" action="/results">
+
+<!-- <form method="GET" action="/results">
   <lable for="search"></lable>
   <input type="text"  id="search" name="teamSearch" />
 
   <input type="submit" />
-</form>
+</form> -->
+
+
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand"></a>
+    <form method = "GET" class="d-flex" action = "/results">
+      <label for = 'search'></label>
+      <input id = 'search' name = 'teamSearch' class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
