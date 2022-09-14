@@ -14,11 +14,23 @@ app.get('/', (req, res) => {
         res.render('index.ejs')
 })
 
+// app.get('/results', (req, res) => {
+//     axios.get(`https://soccer.sportmonks.com/api/v2.0/teams/search/${req.query.teamSearch}?api_token=${apiKey}&include=stats`)
+//     .then(response => {
+//     //res.render('results.ejs', {teams: response.data.data},)
+//     res.send(response.data.data)
+       
+//     })
+//     .catch(err => {
+//         console.log(err)
+//     })
+// })
 app.get('/results', (req, res) => {
-    axios.get(`https://soccer.sportmonks.com/api/v2.0/teams/search/${req.query.teamSearch}?api_token=${apiKey}&include=`)
+    axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats`)
     .then(response => {
-        res.render('results.ejs', {teams: response.data.data})
-        // res.send(response.data.data)
+    //ender('results.ejs', {players: response.data.data},)
+    res.send(response.data.data)
+       
     })
     .catch(err => {
         console.log(err)
@@ -26,5 +38,5 @@ app.get('/results', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Example app listening at ${port}`)
+    console.log(`${port} is alive`)
 })

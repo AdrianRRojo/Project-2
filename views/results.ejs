@@ -1,9 +1,9 @@
-<% teams.forEach(team => { %> 
-    <h2><%=team.name %></h2>
-    <p><%=team.city %></p>
-    <img src="<%= team.logo_path %>">
-    <h3><%= team.short_code %> </h3>
-    <p><%=team.name %> was founded on <%= team.founded %> </p>
-    <p><%=team.name %> is based in <%= team.venue_id %> </p>
-    <p><%=team.name %> is managed by <%= team.country_id %> </p>
-<% }) %>
+<% players.forEach(player => { %>
+    <div class="player">
+        <h1> <%= player.fullname %> </h1>
+        <img src = "<%= player.image_path %>">
+        <h2><%= player.birthcountry %> </h2>
+        <h3>Club: <%= player.team.data.name %></h3>
+        <img src = "<%= player.team.data.logo_path%>"/>
+    </div>
+<% }) %> 
