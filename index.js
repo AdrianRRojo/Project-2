@@ -1,61 +1,32 @@
-//require packages
-require('dotenv').config()
 const express = require('express')
-const ejsLayouts = require('express-ejs-layouts')
-const cookikeParser = require('cookie-parser')
-const db = require('./models')
-const crypto = require('crypto-js')
-//config express / middlewares
 const app = express()
-const PORT = process.env.PORT || 3000
+const port = 3000
+const axios = require('axios')
+const ejsLayouts = require('express-ejs-layouts')
+const db = require('./models')
+
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 app.use(express.urlencoded({extended: false}))
-app.use(cookikeParser())
+const apiKey = process.env.API_KEY
 
 
 
-app.use(async (req,res,next) => {
-    // console.log('ayo from the midware')
-    res.locals.myData = 'hello, fellow route!'
-    // if there is a cookie on the incoming request
-    if(req.cookies.userId){
-        //decrypt the user id before we look up the user in the db
-        const decryptedId = crypto.AES.decrypt(req.cookies.userId.toString(), process.env.ENC_SECRET)
-        const decryptedIdString = decryptedId.toString(crypto.enc.Utf8)
-
-        // look up the user in the database
-        const user = await db.user.findByPk(decryptedIdString)
-        // mount the user in the res.locals
-        res.locals.user = user
-    }else {
-        res.locals.user = null
-    }
-
-        
-    // if there is no cookie -- set  the user to be null in the res.locals
-
-
-    // move on to the next route and or middleware in the chain
-    // express now knows to move on
-    next()
+app.get('/', (req, res) => {
+        res.render('home.ejs')
 })
 
-//route def
-app.get('/', (req,res) => {
-    // console.log('incoming cookie',req.cookies)
-    // console.log(res.locals.myData)
-    console.log(`the current user is ${res.locals.user}`)
-    res.render('home.ejs')
+app.get('/results', (req, res) => {
+    axios.get(`https://soccer.sportmonks.com/api/v2.0/teams/search/${req.query.teamSearch}?api_token=${apiKey}&include=`)
+    .then(response => {
+        //res.render('results.ejs', {teams: response.data.data})
+        res.send(response.data.data)
+    })
+    .catch(err => {
+        console.log(err)
+    })
 })
-// controllers
 
-app.use('/users', require('./controllers/users'))
-app.use('/player', require('./controllers/players.js'))
-app.use('/matches', require('./controllers/matches'))
-app.use('/comments', require('/controllers/comments'))
-//listen on a port
-
-app.listen(PORT, ()=> {
-    console.log(`${PORT} Is online`)
+app.listen(port, () => {
+    console.log(`Example app listening at ${port}`)
 })

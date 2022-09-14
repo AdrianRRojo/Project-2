@@ -1,35 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User auth lesson</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Team Search</title>
 </head>
 <body>
-   <h1> Hello User!</h1>
-   <nav>
-    <ul>
-        <% if (user){ %>
-            <li>
-                <a href = "/users/profile">Profile</a>
-            </li>
-            <li>
-                <a href = "/users/logout">Logout</a>
-            </li>
-        <% }else { %>
-
-       
-        <li>
-            <a href = "/users/new">Sign up</a>
-        </li>
-        <li>
-            <a href = "/users/login">Login</a>
-        </li>
-        <% } %> 
-       
-    </ul>
-   </nav>
-   <%- body %> 
+  <nav>
+    <a href="/">home</a>
+  </nav>
+  <main>
+    <%- body %>
+  </main>
 </body>
 </html>

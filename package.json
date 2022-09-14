@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/WDI-SEA/project-2-auth-lesson#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "crypto-js": "^4.1.1",
