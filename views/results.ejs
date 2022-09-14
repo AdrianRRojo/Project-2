@@ -5,5 +5,17 @@
         <h2><%= player.birthcountry %> </h2>
         <h3>Club: <%= player.team.data.name %></h3>
         <img src = "<%= player.team.data.logo_path%>"/>
+        <p>Appearences last season: <%= player.stats.data[0].appearences%> </p>
+        <p>Mins Played last season: <%= player.stats.data[0].minutes %> </p>
+        <p>Goals last season: <%= player.stats.data[0].goals %> </p>
+        <p>Assists last season: <%= player.stats.data[0].assists %> </p>
+        <p>Yellow Cards last season: <%= player.stats.data[0].yellowcards %> </p>
+        <p>Red Cards last season: <%= player.stats.data[0].redcards %> </p>
+        <p>Own Goals last season: <%= player.stats.data[0].owngoals %> </p>
+        <p><%=player.fullname %> was dispossesed: <%= player.stats.data[0].dispossesed %> times last season  </p>
+
+
+
+
     </div>
 <% }) %> 

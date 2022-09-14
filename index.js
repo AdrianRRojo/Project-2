@@ -26,10 +26,10 @@ app.get('/', (req, res) => {
 //     })
 // })
 app.get('/results', (req, res) => {
-    axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats`)
+    axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
     .then(response => {
-    //ender('results.ejs', {players: response.data.data},)
-    res.send(response.data.data)
+    res.render('results.ejs', {players: response.data.data},)
+    //res.send(response.data.data)
        
     })
     .catch(err => {
