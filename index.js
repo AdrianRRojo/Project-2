@@ -3,24 +3,22 @@ const app = express()
 const port = 3000
 const axios = require('axios')
 const ejsLayouts = require('express-ejs-layouts')
-const db = require('./models')
 
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
-app.use(express.urlencoded({extended: false}))
-const apiKey = process.env.API_KEY
 
-
+require('dotenv').config()
+apiKey = process.env.API_KEY
 
 app.get('/', (req, res) => {
-        res.render('home.ejs')
+        res.render('index.ejs')
 })
 
 app.get('/results', (req, res) => {
     axios.get(`https://soccer.sportmonks.com/api/v2.0/teams/search/${req.query.teamSearch}?api_token=${apiKey}&include=`)
     .then(response => {
-        //res.render('results.ejs', {teams: response.data.data})
-        res.send(response.data.data)
+        res.render('results.ejs', {teams: response.data.data})
+        // res.send(response.data.data)
     })
     .catch(err => {
         console.log(err)
