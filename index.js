@@ -18,8 +18,9 @@ apiKey = process.env.API_KEY
 app.use('/results', require('./controllers/results'))
 app.use('/users', require('./controllers/users'))
 
+
+
 app.use(async (req, res, next) => {
-    // console.log('hello from a middleware 👋')
     // if there is a cookie on the incoming request
     if (req.cookies.userId) {
         // decrypt the user id before we look up the user in the db
@@ -39,7 +40,7 @@ app.use(async (req, res, next) => {
 
 
 
-
+// Home page route
 app.get('/', (req, res) => {
         res.render('index.ejs')
 })
