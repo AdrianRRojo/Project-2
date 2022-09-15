@@ -15,6 +15,14 @@ app.use(cookieParser())
 require('dotenv').config()
 apiKey = process.env.API_KEY
 
+<<<<<<< HEAD
+=======
+app.use('/results', require('./controllers/results'))
+app.use('/users', require('./controllers/users'))
+
+
+
+>>>>>>> parent of 5d90ea2 (connected playerId to commentId, but comments don't show yet)
 app.use(async (req, res, next) => {
     // console.log('hello from a middleware 👋')
     // if there is a cookie on the incoming request
