@@ -15,6 +15,9 @@ app.use(cookieParser())
 require('dotenv').config()
 apiKey = process.env.API_KEY
 
+app.use('/results', require('./controllers/results'))
+app.use('/users', require('./controllers/users'))
+
 app.use(async (req, res, next) => {
     // console.log('hello from a middleware 👋')
     // if there is a cookie on the incoming request
@@ -42,8 +45,6 @@ app.get('/', (req, res) => {
 })
 
 
-app.use('/results', require('./controllers/results'))
-app.use('/users', require('./controllers/users'))
 
 
 
@@ -51,8 +52,28 @@ app.use('/users', require('./controllers/users'))
 
 
 
-
-
+// app.get('/results', (req, res) => {
+//     axios.get(`https://soccer.sportmonks.com/api/v2.0/teams/search/${req.query.teamSearch}?api_token=${apiKey}&include=stats`)
+//     .then(response => {
+//     //res.render('results.ejs', {teams: response.data.data},)
+//     res.send(response.data.data)
+       
+//     })
+//     .catch(err => {
+//         console.log(err)
+//     })
+// })
+// app.get('/results', (req, res) => {
+//     axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
+//     .then(response => {
+//     res.render('results.ejs', {players: response.data.data},)
+//     //res.send(response.data.data)
+       
+//     })
+//     .catch(err => {
+//         console.log(err)
+//     })
+// })
 
 app.listen(port, () => {
     console.log(`${port} is alive`)
