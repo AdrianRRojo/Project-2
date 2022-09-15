@@ -4,6 +4,10 @@ const db = require('../models')
 const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
 
+const axios = require('axios')
+const ejsLayouts = require('express-ejs-layouts')
+const cookieParser = require('cookie-parser')
+
 // GET /users/new -- render a form to create a new user
 router.get('/new', (req, res) => {
     res.render('users/new.ejs')

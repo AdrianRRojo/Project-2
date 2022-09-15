@@ -1,5 +1,4 @@
-const express = require('express')
-const router = express.Router()
+const router = require('express').Router()
 const db = require('../models')
 const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
@@ -12,6 +11,7 @@ const cookieParser = require('cookie-parser')
 require('dotenv').config()
 // encrypts the API key
 apiKey = process.env.API_KEY
+
 
 
 // Provides player statistics based on who the user searched for

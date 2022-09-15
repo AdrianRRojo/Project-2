@@ -19,9 +19,8 @@ app.use('/comments', require('./controllers/comments'))
 app.use('/results', require('./controllers/results'))
 app.use('/users', require('./controllers/users'))
 
-
-
 app.use(async (req, res, next) => {
+    // console.log('hello from a middleware 👋')
     // if there is a cookie on the incoming request
     if (req.cookies.userId) {
         // decrypt the user id before we look up the user in the db
@@ -41,7 +40,7 @@ app.use(async (req, res, next) => {
 
 
 
-// Home page route
+
 app.get('/', (req, res) => {
         res.render('index.ejs')
 })
@@ -65,17 +64,17 @@ app.get('/', (req, res) => {
 //         console.log(err)
 //     })
 // })
-// app.get('/results', (req, res) => {
-//     axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
-//     .then(response => {
-//     res.render('results.ejs', {players: response.data.data},)
-//     //res.send(response.data.data)
+app.get('/results', (req, res) => {
+    axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
+    .then(response => {
+    res.render('results.ejs', {players: response.data.data},)
+    //res.send(response.data.data)
        
-//     })
-//     .catch(err => {
-//         console.log(err)
-//     })
-// })
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})
 
 app.listen(port, () => {
     console.log(`${port} is alive`)
