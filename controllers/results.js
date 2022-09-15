@@ -10,10 +10,22 @@ const cookieParser = require('cookie-parser')
 
 
 require('dotenv').config()
-// encrypts the API key
 apiKey = process.env.API_KEY
 
 
+
+router.get('/', async (req, res) => {
+    console.log('The router works')
+    axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
+    .then(response => {
+    res.render('users/results.ejs', {players: response.data.data},)
+    //res.send(response.data.data)
+       
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})
 
 // Provides player statistics based on who the user searched for
 // router.get('/', async (req, res) => {
