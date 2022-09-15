@@ -1,5 +1,5 @@
 sequelize model:create --name user --attributes email:string,password:string
-
+sequelize model:create --name comment -attributes content:string,userId:integer,playerId:injury
 
 API KEY -> aY50XDf2jTlT21GoQw2uolZWl3IP0PHKv6wFwBbVijcFrhI4rAOiLx5OWI66
 
@@ -7,22 +7,8 @@ API KEY -> aY50XDf2jTlT21GoQw2uolZWl3IP0PHKv6wFwBbVijcFrhI4rAOiLx5OWI66
 https://soccer.sportmonks.com/api/v2.0/leagues/501?api_token={API KEY}&include=country,
 
 
-Denmark #320
-
-Superliga
-271
-
-
-Superliga Play-offs
-1659
 
 
 
-Scotland #1161
-
-Premiership
-501
 
 
-Premiership Play-Offs
-513

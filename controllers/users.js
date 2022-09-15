@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
         // create a new user
         const [newUser, created] = await db.user.findOrCreate({
             where: {
-                email: req.body.email
+                username: req.body.username
             }, 
             defaults: {
                 password: hashedPassword
@@ -59,13 +59,13 @@ router.get('/login', (req, res) => {
 // POST /users/login -- accept a payload of form data and use it log a user in 
 router.post('/login', async (req, res) => {
     try {
-        // look up the user in the db using the supplied email
+        // look up the user in the db using the supplied username
         const user = await db.user.findOne({ 
             where: {
-                email: req.body.email
+                username: req.body.username
             } 
         })
-        const noLoginMessage = 'Incorrect email or password'
+        const noLoginMessage = 'Incorrect username or password'
 
         // if the user is not found -- send the user back to the login form
         if (!user) {
