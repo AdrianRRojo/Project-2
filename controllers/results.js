@@ -28,35 +28,19 @@ router.get('/', async (req, res) => {
 })
 
 // Provides player statistics based on who the user searched for
-// router.get('/', async (req, res) => {
-//     // console.log('The router works')
-//     axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
-//     .then(response => {
-//     res.render('users/results.ejs', {players: response.data.data, playerSearch: req.query.playerSearch})
-//     //res.send(response.data.data)
-       
-//     })
-//     .catch(err => {
-//         console.log(err)`
-//     })
-// })
-
 router.get('/', async (req, res) => {
-  
-    try {
-        // axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
-        const response = await axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
-        const [player, created] = await db.player.findOrCreate({
-            where: {
-                name: req.query.playerSearch,
-                playerId: response.data.data[0].player_id
-            }
-        })
-        res.render('users/results.ejs', {players: response.data.data, playerSearch: req.query.playerSearch})
-    } catch (error) {
-        console.log(error)
-    }
+    // console.log('The router works')
+    axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
+    .then(response => {
+    res.render('users/results.ejs', {players: response.data.data},)
+    //res.send(response.data.data)
+       
+    })
+    .catch(err => {
+        console.log(err)
+    })
 })
+
 
 
 
