@@ -15,9 +15,6 @@ app.use(cookieParser())
 require('dotenv').config()
 apiKey = process.env.API_KEY
 
-app.use('/results', require('./controllers/results'))
-app.use('/users', require('./controllers/users'))
-
 app.use(async (req, res, next) => {
     // console.log('hello from a middleware 👋')
     // if there is a cookie on the incoming request
@@ -45,6 +42,8 @@ app.get('/', (req, res) => {
 })
 
 
+app.use('/results', require('./controllers/results'))
+app.use('/users', require('./controllers/users'))
 
 
 
@@ -52,6 +51,9 @@ app.get('/', (req, res) => {
 
 
 
+
+
+<<<<<<< HEAD
 // app.get('/results', (req, res) => {
 //     axios.get(`https://soccer.sportmonks.com/api/v2.0/teams/search/${req.query.teamSearch}?api_token=${apiKey}&include=stats`)
 //     .then(response => {
@@ -74,6 +76,8 @@ app.get('/results', (req, res) => {
         console.log(err)
     })
 })
+=======
+>>>>>>> parent of dc619b5 (added comment box, and results route to controllers)
 
 app.listen(port, () => {
     console.log(`${port} is alive`)
