@@ -1,0 +1,5 @@
+<% timeline.forEach(post => {( %> 
+  <h3>  <%= post.header %></h3> 
+    <p><%= post.post %></p> 
+    <a href = "/timeline/<%= post.id %>/edit">Edit</a>
+<% }) %> 

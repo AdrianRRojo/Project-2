@@ -1,5 +1,5 @@
 <h1> Edit this post: </h1>
-<form action = "/timeline/:id/edit" method = "POST">
+<form action = "/timeline/:id/edit" method = "PUT">
 
     <label for = 'header'>header: </label>
     <input id = 'header' type = "text" name = 'header' required>
@@ -7,7 +7,6 @@
     <label for = 'post'>type here... </label>
     <input id = 'post' type = 'post' name = 'post' required>
 
-    <a href = "/timeline/<%= post.id %>/edit"> this Edit</a>
     <a href = "/timeline/<%= post.id %>/delete">Delete</a>
     <a href = "/timeline/<%= post.id %> ">Save</a>
 </form>

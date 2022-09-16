@@ -43,11 +43,11 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const timeline = await db.timeline.findByPk(req.params.id)
-        res.render('timeline/show', { timeline: timeline })
+        res.render('timeline/view', { timeline: timeline })
         res.redirect('/timeline/:id', { timeline: timeline })
     } catch (error) {
         console.log(error)
-        res.status(400).render('main/404')
+        
     }
 })
 
@@ -62,7 +62,7 @@ router.put('/:id/edit', async (req, res) => {
         res.redirect('/timeline')
     } catch (error) {
         console.log(error)
-        res.status(400).render('main/404')
+        
     }
 })
 
@@ -74,7 +74,6 @@ router.delete('/:id', async (req, res) => {
         res.redirect('/timeline')
     } catch (error) {
         console.log(error)
-        res.status(400).render('main/404')
     }
 })
 
