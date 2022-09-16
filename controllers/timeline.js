@@ -43,14 +43,23 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const timeline = await db.timeline.findByPk(req.params.id)
+        //console.log(JSON.parse(JSON.stringify(timeline)))
         res.render('timeline/view', { timeline: timeline })
-        res.redirect('/timeline/:id', { timeline: timeline })
+        //res.redirect('/timeline/:id', { timeline: timeline })
     } catch (error) {
         console.log(error)
         
     }
 })
+router.get('/:id/edit',async (req,res) => {
+    try{
+        const timeline = await db.timeline.findByPk(req.params.id)
+        res.render('timeline/edit', {timeline:timeline})
 
+    }catch(error){
+        console.log(error)
+    }
+})
 router.put('/:id/edit', async (req, res) => {
     try {
         const timeline = await db.timeline.update({
