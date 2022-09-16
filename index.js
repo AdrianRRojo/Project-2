@@ -12,12 +12,16 @@ app.use(ejsLayouts)
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
+
 require('dotenv').config()
 apiKey = process.env.API_KEY
+
+
 
 app.use('/comments', require('./controllers/comments'))
 app.use('/results', require('./controllers/results'))
 app.use('/users', require('./controllers/users'))
+app.use('/timeline', require('./controllers/timeline'))
 
 
 
