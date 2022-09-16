@@ -1,17 +1,17 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../models')
-const crypto = require('crypto-js')
-const bcrypt = require('bcrypt')
-const axios = require('axios')
 const ejsLayouts = require('express-ejs-layouts')
 const cookieParser = require('cookie-parser')
-
-
+const methodOverride = require('method-override')
 
 require('dotenv').config()
 // encrypts the API key
 apiKey = process.env.API_KEY
+
+router.use(express.urlencoded({ extended: false }))
+router.use(cookieParser())
+router.use(methodOverride('_method'))
 
 router.get('/', async (req, res) => {
     try {
@@ -60,7 +60,7 @@ router.get('/:id/edit',async (req,res) => {
         console.log(error)
     }
 })
-router.put('/:id/edit', async (req, res) => {
+router.put('/', async (req, res) => {
     try {
         const timeline = await db.timeline.update({
             header: req.body.header,
@@ -68,6 +68,7 @@ router.put('/:id/edit', async (req, res) => {
         }, {
             where: { id: req.params.id }
         })
+        
         res.redirect('/timeline')
     } catch (error) {
         console.log(error)
