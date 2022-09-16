@@ -60,7 +60,7 @@ router.get('/:id/edit',async (req,res) => {
         console.log(error)
     }
 })
-router.put('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const timeline = await db.timeline.update({
             header: req.body.header,
@@ -86,7 +86,6 @@ router.delete('/:id', async (req, res) => {
         console.log(error)
     }
 })
-
 
 
 module.exports = router

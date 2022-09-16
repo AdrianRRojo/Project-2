@@ -1,17 +1,19 @@
 <h1> Edit this post: </h1>
-<form action = "/timeline/:id?_method=UPDATE" method = "POST">
+<form action = "/timeline/<%= timeline.id %>/?_method=PUT" method = "POST">
 
     <label for = 'header'>header: </label>
     <input id = 'header' type = "text" name = 'header' required>
 
     <!-- "Post" relates to the main text -->
     <label for = 'post'>type here... </label>
-    <input id = 'post' type = 'post' name = 'post' required>
+    <input id = 'post' type = 'post' name = 'post'>
 
     <input type = 'submit' value = 'Submit'>
     <a href = "/timeline">Cancel</a>
-    <a href = "/timeline/<%= timeline.id %>/delete">Delete</a>
+</form>
 
+<form action = "/timeline/<%= timeline.id %>/?_method=DELETE" method = "POST">
+    <input type = 'submit' value = 'Delete'>
 </form>
 
 
