@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
             const encryptedUserIdString = encryptedUserId.toString()
             res.cookie('userId', encryptedUserIdString)
             // redirect to the homepage
-            res.redirect('/profile')
+            res.redirect('/users/profile')
         }
 
     } catch(err) {
@@ -80,7 +80,7 @@ router.post('/login', async (req, res) => {
             const encryptedUserId = crypto.AES.encrypt(user.id.toString(), process.env.ENC_SECRET)
             const encryptedUserIdString = encryptedUserId.toString()
             res.cookie('userId', encryptedUserIdString)
-            res.redirect('/profile')
+            res.redirect('/users/profile')
         }
     } catch(err) {
         console.log(err)
