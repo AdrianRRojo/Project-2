@@ -8,7 +8,6 @@ const ejsLayouts = require('express-ejs-layouts')
 const cookieParser = require('cookie-parser')
 
 
-
 require('dotenv').config()
 // encrypts the API key
 apiKey = process.env.API_KEY
@@ -29,35 +28,41 @@ apiKey = process.env.API_KEY
 // })
 
 router.get('/', async (req, res) => {
-  
+
     try {
         // axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
+        
         const response = await axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
-        //res.json(response.data.data)
-        // const [player, created] = await db.player.findOrCreate({
-        //     where: {
-        //         name: req.query.playerSearch,
-        //         playerId: response.data.data[0].player_id
+        res.render('users/results.ejs', {players: response.data.data, playerSearch: req.query.playerSearch})
+        // res.render('users/results.ejs', {players: response.data.data, playerSearch: req.query.playerSearch})
+        // if(!req.query.playerSearch === "Lionel Andrés Messi Cuccittini") {
+        //     res.render('users/results.ejs', {players: response.data.data[0], playerSearch: req.query.playerSearch})
+        //     console.log(response.data.data[0])
+        //     const [player, created] = await db.player.findOrCreate({
+        //         where: {
+        //             name: req.query.playerSearch,
+        //             playerId: response.data.data[0].player_id
         //     }
         // })
-        res.render('users/results.ejs', {players: response.data.data, playerSearch: req.query.playerSearch})
+        // }else{
+        //     res.send(response.data.data[3])
+        // }
+
+     
+
+        
+       // res.json(response.data.data[x])
+    //     const [player, created] = await db.player.findOrCreate({
+    //         where: {
+    //             name: req.query.playerSearch,
+    //             playerId: response.data.data[0].player_id
+    //         }
+    //     })
+    //    res.render('users/results.ejs', {players: response.data.data, playerSearch: req.query.playerSearch})
     } catch (error) {
         console.log(error)
     }
 })
 
-
-
-// app.get('/results', (req, res) => {
-//     axios.get(`https://soccer.sportmonks.com/api/v2.0/teams/search/${req.query.teamSearch}?api_token=${apiKey}&include=stats`)
-//     .then(response => {
-//     //res.render('results.ejs', {teams: response.data.data},)
-//     res.send(response.data.data)
-       
-//     })
-//     .catch(err => {
-//         console.log(err)
-//     })
-// })
 
 module.exports = router

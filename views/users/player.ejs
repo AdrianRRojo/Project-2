@@ -1,0 +1,94 @@
+<br>
+<br>
+
+    <!-- console.log(player) -->
+    <!-- <table class="table table-dark">
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td colspan="2" class="table table-dark table-hover">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td colspan="2" class="table table-dark table-hover">Larry the Bird3</td>
+            <td>@twitter</td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td colspan="2" class="table table-dark table-hover">Larry the Bird3</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table> -->
+
+
+
+    <div class="player">
+        <table class="table table-dark">
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td colspan="2" class="table table-dark table-hover">
+                    <img src="<%= player.image_path %>" class="rounded float-start" alt="...">
+                    <img src="<%= player.team.data.logo_path%>" class="rounded float-start" alt="...">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                  <h1 class = "display-4"><%= player.display_name %></h1>
+
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                        <p class = "display-7"title="Source Title"><%= player.team.data.name %></p>
+                        </figcaption>
+                      </figure>
+              </tr>
+              <tr>
+                <th scope="row"></th>
+                <td colspan="2" class="table table-dark table-hover">Larry the Bird3</td>
+              </tr>
+              <tr>
+                <th scope="row"></th>
+                <td colspan="2" class="table table-dark table-hover">Larry the Bird3</td>
+              </tr>
+              <tr>
+                <th scope="row"></th>
+                <td colspan="2" class="table table-dark table-hover">Larry the Bird3</td>
+              </tr>
+              <tr>
+                <th scope="row"></th>
+                <td colspan="2" class="table table-dark table-hover">Larry the Bird3</td>
+              </tr>
+
+            </tbody>
+          </table>
+
+
+
+
+
+
+        
+        <h1> <%= player.fullname %> </h1>
+        <img src = "<%= player.image_path %>">
+        <h2><%= player.birthcountry %> </h2>
+        <h3>Club: <%= player.team.data.name %></h3>
+        <img src = "<%= player.team.data.logo_path%>"/>
+       
+        <div class="opacity-100"> Goals scored: <%= player.stats.data[0].goals%> </div>
+
+       
+        <p>Appearences last season: <%= player.stats.data[0].appearences%> </p>
+        <p>Mins Played last season: <%= player.stats.data[0].minutes %> </p>
+        <p>Goals last season: <%= player.stats.data[0].goals %> </p>
+        <p>Assists last season: <%= player.stats.data[0].assists %> </p>
+        <p>Yellow Cards last season: <%= player.stats.data[0].yellowcards %> </p>
+        <p>Red Cards last season: <%= player.stats.data[0].redcards %> </p>
+        <p>Own Goals last season: <%= player.stats.data[0].owngoals %> </p>
+        <p><%=player.fullname %> was dispossesed: <%= player.stats.data[0].dispossesed %> times last season  </p>
+    </div>
+
