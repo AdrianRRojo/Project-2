@@ -17,8 +17,9 @@ router.get('/', async (req, res) => {
     try {
         //https://soccer.sportmonks.com/api/v2.0/players/${req.query.playerClick}?api_token=${apiKey}&include=stats,team
         const response = await axios.get(`https://soccer.sportmonks.com/api/v2.0/players/${req.query.playerClick}?api_token=${apiKey}&include=stats,team`)
-        console.log(req.query.playerClick)
-        res.render('users/player.ejs', {player: response.data.data, playerClick: req.query.playerClick})
+       // console.log(req.query.playerClick)
+       //res.send(response.data.data)
+       res.render('users/player.ejs', {player: response.data.data, playerClick: req.query.playerClick})
     } catch (error) {
         console.log(error)
     }
