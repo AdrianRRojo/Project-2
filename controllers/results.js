@@ -33,12 +33,13 @@ router.get('/', async (req, res) => {
     try {
         // axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
         const response = await axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
-        const [player, created] = await db.player.findOrCreate({
-            where: {
-                name: req.query.playerSearch,
-                playerId: response.data.data[0].player_id
-            }
-        })
+        //res.json(response.data.data)
+        // const [player, created] = await db.player.findOrCreate({
+        //     where: {
+        //         name: req.query.playerSearch,
+        //         playerId: response.data.data[0].player_id
+        //     }
+        // })
         res.render('users/results.ejs', {players: response.data.data, playerSearch: req.query.playerSearch})
     } catch (error) {
         console.log(error)
