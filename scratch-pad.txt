@@ -1,7 +1,7 @@
 sequelize model:create --name user --attributes email:string,password:string
 sequelize model:create --name comment -attributes content:string,userId:integer,playerId:injury
 
-API KEY -> aY50XDf2jTlT21GoQw2uolZWl3IP0PHKv6wFwBbVijcFrhI4rAOiLx5OWI66
+aY50XDf2jTlT21GoQw2uolZWl3IP0PHKv6wFwBbVijcFrhI4rAOiLx5OWI66
 
 
 https://soccer.sportmonks.com/api/v2.0/leagues/501?api_token={API KEY}&include=country,
@@ -9,7 +9,7 @@ https://soccer.sportmonks.com/api/v2.0/leagues/501?api_token={API KEY}&include=c
 
 
 
-
+TGwb6DMiQQ3vwJu3
 
 
     <div class="player">

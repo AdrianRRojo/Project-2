@@ -3,21 +3,24 @@
  <br>
  <br>
  <br>
-<!-- Results found and listed depending on the player that is searched for by the user -->\
+<!-- Results found and listed depending on the player that is searched for by the user -->
 
 
 <% players.forEach(players => { %> 
-    <div class="card" style="width: 18rem;">
-        <form method = "GET" action = "/players">
-            <input type="hidden" name="playerClick" value="<%= players.player_id %>">
-            <button type="submit" class="btn btn-primary">View Player</button>
-        </form>
-
+    <div class="card text-bg-dark p-3" style="width: 18rem;">
+     
         <img src="<%=players.image_path %>" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= players.display_name %> </h5>
           <p class="card-text"><%= players.nationality %> </p>
+          <form method = "GET" action = "/players">
+            <input type="hidden" name="playerClick" value="<%= players.player_id %>">
+            <button type="submit" class="btn btn-outline-danger">View Player</button>
+        </form>
+
       </div>
+
+    
 <%   })  %>
 
 

@@ -5,15 +5,17 @@
 <h1> Edit this post: </h1>
 <form action = "/timeline/<%= timeline.id %>/?_method=PUT" method = "POST">
 
-    <label for = 'header'>header: </label>
-    <input id = 'header' type = "text" name = 'header' required>
-
-    <!-- "Post" relates to the main text -->
-    <label for = 'post'>type here... </label>
-    <input id = 'post' type = 'post' name = 'post'>
-
-    <input type = 'submit' value = 'Submit'>
-    <a href = "/timeline">Cancel</a>
+    <div class="mb-3">
+        <label for="header" class="form-label">Subject:</label>
+        <input type="text" name = "header" class="form-control" id="exampleFormControlInput1" placeholder="Subject...">
+      </div>
+      <div class="mb-3">
+        <label for="post" class="form-label">textarea</label>
+        <textarea class="form-control" id="post" rows="3"></textarea>
+      </div>
+      <input type = "hidden" name = 'userId' value = "<%= user.id %>">
+      <input type = 'hidden' name = 'username' value = "<%= user.username%>">
+    <button type = 'submit'>Save changes</button>
 </form>
 
 <form action = "/timeline/<%= timeline.id %>/?_method=DELETE" method = "POST">

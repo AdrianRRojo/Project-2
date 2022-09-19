@@ -4,16 +4,16 @@
 <br>
 <h3>Create a new post: </h3>
 <form action = "/timeline" method = "POST">
-
-    <label for = 'header'>header: </label>
-    <input id = 'header' type = "text" name = 'header' required>
-
-    <label for = 'post'>type here... </label>
-    <input id = 'post' type = 'post' name = 'post' required>
-    <input type = "hidden" name = 'userId' value = "<%= user.id %>">
-    <input type = 'hidden' name = 'username' value = "<%= user.username%>">
-    
-
+    <div class="mb-3">
+        <label for="header" class="form-label">Subject:</label>
+        <input type="text" name = "header" class="form-control" id="exampleFormControlInput1" placeholder="Subject...">
+      </div>
+      <div class="mb-3">
+        <label for="post" class="form-label">textarea</label>
+        <textarea class="form-control" id="post" rows="3"></textarea>
+      </div>
+      <input type = "hidden" name = 'userId' value = "<%= user.id %>">
+      <input type = 'hidden' name = 'username' value = "<%= user.username%>">
     <button type = 'submit'>Send post</button>
 </form>
 

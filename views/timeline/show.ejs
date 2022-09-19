@@ -4,11 +4,13 @@
 <br>
 
 <% timeline.forEach(post => {%>
-  <div class="card border-dark mb-3" style="max-width: 18rem;">
+  
+  <div class="card border-light mb-3 text-bg-light" style="max-width: 18rem;">
     <div class="card-header"><%= user.username %> said: </div>
-    <div class="card-body text-dark">
+    <div class="card-body text-">
       <h5 class="card-title"> <a href = "/timeline/<%= post.id %>"> <%= post.header %> </a></h5>
       <p class="card-text">Click to view more</p>
     </div>
   </div>
+
   <% }) %> 
