@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       models.user.hasMany(models.comment)
       models.user.hasMany(models.timeline)
+      models.user.hasMany(models.user_timeline)
     }
   }
   user.init({

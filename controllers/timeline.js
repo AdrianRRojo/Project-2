@@ -15,9 +15,9 @@ router.use(methodOverride('_method'))
 
 router.get('/', async (req, res) => {
     try {
-        const timeline = await db.timeline.findAll()
-        res.render('timeline/show', { timeline: timeline })
-
+        const timeline = await db.timeline.findAll({ include: [db.user] })
+        res.render('timeline/show', { timeline: timeline})
+        
     } catch (error) {
         console.log(error)
        // res.status(400).render('main/404')
@@ -25,18 +25,26 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/new', (req, res) => {
-    console.log(res.locals.user)
+    console.log(res.locals.user.username)
     console.log(req.cookies.userId)
     res.render('timeline/new')
 })
 router.post('/', async (req, res) => {
     try {
+        
         const newTimeline = await db.timeline.create({
             header: req.body.header,
             post: req.body.post,
-            userId: res.locals.user.id
+            userId: res.locals.user.id,
         })
-        console.log(newTimeline)
+        const timeline = await db.timeline.findAll({ include: [db.user] })
+        const findUser = await db.user.findOne({
+            where: { 
+                id: res.locals.user.id
+            }
+        })
+        findUser.addTimeline(newTimeline)
+        
         res.redirect('/timeline')
     } catch (error) {
         console.log(error)

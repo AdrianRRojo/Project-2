@@ -10,6 +10,8 @@
 
     <label for = 'post'>type here... </label>
     <input id = 'post' type = 'post' name = 'post' required>
+    <input type = "hidden" name = 'userId' value = "<%= user.id %>">
+    <input type = 'hidden' name = 'username' value = "<%= user.username%>">
     
 
     <button type = 'submit'>Send post</button>

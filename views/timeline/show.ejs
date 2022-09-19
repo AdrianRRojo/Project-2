@@ -2,7 +2,13 @@
 <br>
 <br>
 <br>
+
 <% timeline.forEach(post => {%>
-  <a href = "/timeline/<%= post.id %>"> <%= post.header %> </a>
-  <br>
-<% }) %> 
+  <div class="card border-dark mb-3" style="max-width: 18rem;">
+    <div class="card-header"><%= user.username %> said: </div>
+    <div class="card-body text-dark">
+      <h5 class="card-title"> <a href = "/timeline/<%= post.id %>"> <%= post.header %> </a></h5>
+      <p class="card-text">Click to view more</p>
+    </div>
+  </div>
+  <% }) %> 
