@@ -16,28 +16,30 @@ router.use(methodOverride('_method'))
 router.get('/', async (req, res) => {
     try {
         const timeline = await db.timeline.findAll()
-        res.render('timeline/show', { timeline: timeline }, {user: res.locals.user})
+        res.render('timeline/show', { timeline: timeline })
 
     } catch (error) {
         console.log(error)
-        res.status(400).render('main/404')
+       // res.status(400).render('main/404')
     }
 })
 
 router.get('/new', (req, res) => {
-    res.render('timeline/new', {user: res.locals.user})
+    console.log(res.locals.user)
+    console.log(req.cookies.userId)
+    res.render('timeline/new')
 })
 router.post('/', async (req, res) => {
     try {
         const newTimeline = await db.timeline.create({
             header: req.body.header,
             post: req.body.post,
-            userId: res.locals.user
+            userId: res.locals.user.id
         })
+        console.log(newTimeline)
         res.redirect('/timeline')
     } catch (error) {
         console.log(error)
-        res.status(400).render('main/404')
     }
 })
 
@@ -45,7 +47,7 @@ router.get('/:id', async (req, res) => {
     try {
         const timeline = await db.timeline.findByPk(req.params.id)
         //console.log(JSON.parse(JSON.stringify(timeline)))
-        res.render('timeline/view', { timeline: timeline },{user: res.locals.user})
+        res.render('timeline/view', { timeline: timeline })
         //res.redirect('/timeline/:id', { timeline: timeline })
     } catch (error) {
         console.log(error)
@@ -66,7 +68,7 @@ router.put('/:id', async (req, res) => {
         const timeline = await db.timeline.update({
             header: req.body.header,
             post: req.body.post,
-            userId: res.locals.user
+            userId: res.locals.user.id
         }, {
             where: { id: req.params.id }
         })
