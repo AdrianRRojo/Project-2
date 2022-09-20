@@ -25,5 +25,18 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.post('/', async (req, res) => {
+    try {
+        const newComment = await db.comment.create({
+            comment: req.body.comment,
+            userId: res.locals.user.id,
+            playerId: req.body.playerId,
+        })
+        res.redirect(`/players?playerClick=${req.body.playerId}`)
+       
+    } catch (error) {
+        console.log(error)
+    }
+})
 
         module.exports = router

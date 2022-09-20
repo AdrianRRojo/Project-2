@@ -19,9 +19,9 @@ router.post('/', async (req, res) => {
         const comment = await db.comment.create({
             comment: req.body.comment,
             playerId: req.body.playerId,
-            userId: req.user.id
+            userId: req.user.id,
         })
-        res.redirect(`/results/?playerSearch=${req.body.playerId}`)
+        res.redirect(`/results/players?playerClick=${req.body.playerId}`)
     } catch (error) {
         console.log(error)
     }

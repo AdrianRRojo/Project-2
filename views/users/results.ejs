@@ -13,6 +13,7 @@
         <div class="card-body">
           <h5 class="card-title"><%= players.display_name %> </h5>
           <p class="card-text"><%= players.nationality %> </p>
+          
           <form method = "GET" action = "/players">
             <input type="hidden" name="playerClick" value="<%= players.player_id %>">
             <button type="submit" class="btn btn-outline-danger">View Player</button>
@@ -23,11 +24,5 @@
     
 <%   })  %>
 
-
-    <!-- find or create for players -->
-    <!-- /players/comments? then query string -->
-    <!-- db.player.findorCreate() then add the comment -->
-
     <!-- Comment boxes under every player -->
-
-  
+    
