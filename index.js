@@ -153,7 +153,7 @@ app.get('/profile', (req, res) => {
 
 app.use('/comments', require('./controllers/comments'))
 app.use('/results', require('./controllers/results'))
-//app.use('/users', require('./controllers/users'))
+app.use('/users', require('./controllers/users'))
 app.use('/timeline', require('./controllers/timeline'))
 app.use('/players', require('./controllers/player'))
 

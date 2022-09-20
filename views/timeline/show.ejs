@@ -2,15 +2,15 @@
 <br>
 <br>
 <br>
-
+<div class="text-bg-dark p-3">
 <% timeline.forEach(post => {%>
   
   <div class="card border-light mb-3 text-bg-light" style="max-width: 18rem;">
     <div class="card-header"><%= user.username %> said: </div>
     <div class="card-body text-">
-      <h5 class="card-title"> <a href = "/timeline/<%= post.id %>"> <%= post.header %> </a></h5>
-      <p class="card-text">Click to view more</p>
+      <h5 class="card-title"> <%= post.header %> </a></h5>
+      <p class="card-text"><a href = "/timeline/<%= post.id %>"> Click to view more</p>
     </div>
   </div>
-
   <% }) %> 
+</div>

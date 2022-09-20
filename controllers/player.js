@@ -20,6 +20,14 @@ router.get('/', async (req, res) => {
        // console.log(req.query.playerClick)
        //res.send(response.data.data)
        res.render('users/player.ejs', {player: response.data.data, playerClick: req.query.playerClick})
+       console.log(response.data.data.display_name)
+       const [player, created] = await db.player.findOrCreate({
+        where :{
+            name: response.data.data.display_name,
+            playerId: req.query.playerClick,
+            userId: res.locals.user.id,
+        }
+    })
     } catch (error) {
         console.log(error)
     }
@@ -30,9 +38,10 @@ router.post('/', async (req, res) => {
         const newComment = await db.comment.create({
             comment: req.body.comment,
             userId: res.locals.user.id,
-            playerId: req.body.playerId,
+            playerId: req.body.playerClick
         })
-        res.redirect(`/players?playerClick=${req.body.playerId}`)
+        console.log("Req BOdy", req.body)
+        res.redirect(`/players?playerClick=${req.body.playerClick}`)
        
     } catch (error) {
         console.log(error)

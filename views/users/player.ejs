@@ -67,15 +67,16 @@
                 <th scope="row"></th>
                 <td colspan="2" class="table table-dark table-hover">Attempted Passes: <%= player.stats.data[0].passes.total %></td>
               </tr>
-              
+           
 
             </tbody>
           </table>
-          <form  method="POST" action="/player">
+          <form  method="POST" action="/players">
             <div class="form-group">
                 <label for="comment">Comment</label>
                 <textarea class="form-control" id="comment" rows="3" name="comment"></textarea>
                 <input type="hidden" name="player_id" value="<%= player.player_id %>">
+                <input type="hidden" name="player_name" value="<%= player.display_name %>"> 
                 <input type="hidden" name="user_id" value="<%= user.user_id %>">
                 <input type="hidden" name="playerClick" value="<%= player.player_id %>">
                 <button type="submit" class="btn btn-danger">Submit</button>

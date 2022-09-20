@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.timeline.belongsTo(models.user)
-      models.timeline.hasMany(models.comment)
       models.timeline.hasMany(models.user_timeline)
     }
   }
