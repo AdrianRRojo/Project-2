@@ -14,16 +14,16 @@ require('dotenv').config()
 apiKey = process.env.API_KEY
 
 
-router.post('/', async (req, res) => {
-    try {
-        const comment = await db.comment.create({
-            comment: req.body.comment,
-            playerId: req.body.playerId,
-            userId: req.user.id,
-        })
-        res.redirect(`/results/players?playerClick=${req.body.playerId}`)
-    } catch (error) {
-        console.log(error)
-    }
-})
+// router.post('/', async (req, res) => {
+//     try {
+//         const comment = await db.comment.create({
+//             comment: req.body.comment,
+//             playerId: req.body.playerId,
+//             userId: req.user.id,
+//         })
+//         res.redirect(`/results/players?playerClick=${req.body.playerId}`)
+//     } catch (error) {
+//         console.log(error)
+//     }
+//})
 module.exports = router

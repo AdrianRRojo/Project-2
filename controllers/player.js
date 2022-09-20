@@ -19,8 +19,14 @@ router.get('/', async (req, res) => {
         const response = await axios.get(`https://soccer.sportmonks.com/api/v2.0/players/${req.query.playerClick}?api_token=${apiKey}&include=stats,team`)
        // console.log(req.query.playerClick)
        //res.send(response.data.data)
-       res.render('users/player.ejs', {player: response.data.data, playerClick: req.query.playerClick})
-       console.log(response.data.data.display_name)
+      // res.render('users/player.ejs', {player: response.data.data, playerClick: req.query.playerClick, comments: db.comment})
+       const comments = await db.comment.findAll({
+              where: {
+                    playerId: req.query.playerClick
+                }
+            })
+
+            res.render('users/player.ejs', {player: response.data.data, playerClick: req.query.playerClick, comments: comments})
        const [player, created] = await db.player.findOrCreate({
         where :{
             name: response.data.data.display_name,

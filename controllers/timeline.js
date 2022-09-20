@@ -15,6 +15,7 @@ router.use(methodOverride('_method'))
 
 router.get('/', async (req, res) => {
     try {
+
         const timeline = await db.timeline.findAll({ include: [db.user] })
         res.render('timeline/show', { timeline: timeline})
         

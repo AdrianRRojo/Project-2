@@ -10,14 +10,15 @@
         <input type="text" name = "header" class="form-control" id="exampleFormControlInput1" placeholder="Subject...">
       </div>
       <div class="mb-3">
-        <label for="post" class="form-label">textarea</label>
+        <label for="post" class="form-label">text area</label>
         <textarea class="form-control" name = "post" id="post" rows="3"></textarea>
       </div>
       <input type = "hidden" name = 'userId' value = "<%= user.id %>">
       <input type = 'hidden' name = 'username' value = "<%= user.username%>">
-    <button type = 'submit'>Save changes</button>
+      <button type="submit" class="btn btn-danger">Save changes</button>
+      <a href ='/timeline/<%=timeline.id %>  '>Cancel?</a>
+  
 </form>
-
 <form action = "/timeline/<%= timeline.id %>/?_method=DELETE" method = "POST">
     <input type = 'submit' value = 'Delete'>
 </form>
