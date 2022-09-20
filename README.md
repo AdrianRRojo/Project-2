@@ -42,9 +42,6 @@ We can see the specifc match id
 ### Players
 - GET -> /players/:id -> show a detailed page of a specific player
 - POST -> /players/:id -> add comments to a specific player
-### Matches
-- GET -> /match/:id -> show detailed page of a specific page
-- POST -> /match/:id -> add comments to a specific match
 ### Comments
 - POST -> users/:id -> add comment to users database
 - PUT -> comment/:id -> all the user to edit their comment
@@ -59,8 +56,8 @@ We can see the specifc match id
 
 ## MVP
 ---
-- Use of Livescore-API
-- at least 2 models (users, matches, players, comments)
+- Use of MySportsMonk API
+- at least 2 models (users,players, comments)
 
 ## stretch goals
 ---
