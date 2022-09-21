@@ -26,26 +26,31 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/new', (req, res) => {
-    console.log(res.locals.user.username)
-    console.log(req.cookies.userId)
+
     res.render('timeline/new')
 })
 router.post('/', async (req, res) => {
     try {
-        
+    
         const newTimeline = await db.timeline.create({
             header: req.body.header,
             post: req.body.post,
             userId: res.locals.user.id,
         })
+        const createComment = await db.timeline_comment.create({
+            userId: res.locals.user.id,
+            userName: res.locals.user.username,
+            timelineId: req.params.id,
+            content: req.body.content
+        })
         const timeline = await db.timeline.findAll({ include: [db.user] })
+        const comment = await db.timeline_comment.findAll({ include: [db.user] })
         const findUser = await db.user.findOne({
             where: { 
                 id: res.locals.user.id
             }
         })
         findUser.addTimeline(newTimeline)
-        
         res.redirect('/timeline')
     } catch (error) {
         console.log(error)
@@ -56,8 +61,16 @@ router.get('/:id', async (req, res) => {
     try {
         const timeline = await db.timeline.findByPk(req.params.id)
         //console.log(JSON.parse(JSON.stringify(timeline)))
-        res.render('timeline/view', { timeline: timeline })
         //res.redirect('/timeline/:id', { timeline: timeline })
+
+        const comments = await db.timeline_comment.findAll({
+            where: {
+                timelineId: req.params.id
+            }
+        })
+        res.render('timeline/view', { timeline: timeline, comments: comments})
+    
+
     } catch (error) {
         console.log(error)
         
@@ -81,6 +94,7 @@ router.put('/:id', async (req, res) => {
         }, {
             where: { id: req.params.id }
         })
+        const timeline_comment = await db.timeline_comment.findAll({ include: [db.user] })
         
         res.redirect('/timeline')
     } catch (error) {
