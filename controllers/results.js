@@ -1,8 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../models')
-const crypto = require('crypto-js')
-const bcrypt = require('bcrypt')
 const axios = require('axios')
 const ejsLayouts = require('express-ejs-layouts')
 const cookieParser = require('cookie-parser')
@@ -43,11 +40,14 @@ router.get('/', async (req, res) => {
 
         axios.request(options)
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data.response[0]);
+                // response = response.data.response[0]
+                console.log(response.data.response[0])
+                res.render('users/results.ejs', {playerSearch: response.data.response[0]})
         }).catch(function (error) {
             console.error(error);
         });
-        // res.render('users/results.ejs', {players: response.data.data, playerSearch: req.query.playerSearch})
+        
         
     } catch (error) {
         console.log(error)
