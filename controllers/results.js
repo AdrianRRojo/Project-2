@@ -36,14 +36,11 @@ router.get('/', async (req, res) => {
             }
           };
         
-        // const response = await axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${req.query.playerSearch}?api_token=${apiKey}&include=stats,team`)
-
         axios.request(options)
             .then(function (response) {
                 // console.log(response.data.response[0]);
-                // response = response.data.response[0]
                 console.log(response.data.response[0])
-                res.render('users/results.ejs', {playerSearch: response.data.response[0]})
+                res.render('users/leagueResults.ejs', {playerSearch: response.data.response[0]})
         }).catch(function (error) {
             console.error(error);
         });

@@ -17,11 +17,6 @@ require('dotenv').config()
 // apiKey = process.env.API_KEY
 apikey = process.env.FOOTBALL_API
 
-
-
-
-
-
 app.use(async (req, res, next) => {
     // console.log('hello from a middleware 👋')
     res.locals.myData = 'hello, fellow route!'
