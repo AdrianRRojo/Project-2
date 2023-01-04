@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
             url: 'https://api-football-v1.p.rapidapi.com/v3/leagues',
             params: {name: `${req.query.playerSearch}`},
             headers: {
-              'X-RapidAPI-Key': 'b023f24da1msh70ae438bfcf216fp13424djsn613bd577a4a9',
+              'X-RapidAPI-Key': apiKey,
               'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
             }
           };
