@@ -14,7 +14,8 @@ app.use(cookieParser())
 
 
 require('dotenv').config()
-apiKey = process.env.API_KEY
+// apiKey = process.env.API_KEY
+apikey = process.env.FOOTBALL_API
 
 
 

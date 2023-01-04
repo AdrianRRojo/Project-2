@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser')
 
 require('dotenv').config()
 // encrypts the API key
-apiKey = process.env.API_KEY
+apiKey = process.env.FOOTBALL_API
 
 router.get('/', async (req, res) => {
     // console.log(req.query.playerClick)
