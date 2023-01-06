@@ -1,17 +1,39 @@
-
  <br>
  <br>
  <br>
  <br>
-<!-- Results found and listed depending on the player that is searched for by the user -->
-
 <div>
     <% console.log(`RESULTS PAGE - ${playerSearch.league.name}`) %> 
-    <p><%= playerSearch.league.name %> </p>
+        
     <img src= <%= playerSearch.league.logo %>> </img>
-    <!-- form  to search for players continuing to use the league  -->
-    
+    <div id="wg-api-football-games"
+    data-host="api-football-v1.p.rapidapi.com"
+    data-key='<%= apiKey%>'
+    data-league="<%=playerSearch.league.id %>"
+    data-team=""
+    data-season="2022"
+    data-theme="dark"
+    data-show-toolbar="true"
+     data-show-errors="false"
+     data-show-logos="true"
+     data-modal-game="true"
+     data-modal-standings="true"
+     data-modal-show-logos="true"
+    class="wg_loader">
 </div>
+    <!-- form  to search for players continuing to use the league  -->
+    <form>
+        <label for="playerName"> Search for a player in <%= playerSearch.league.name%> </label>
+        <br>
+        <input type="text" id="playerName" name="playerName">
+    </form>
+</div>
+
+<script
+    type="module"
+    src="https://widgets.api-sports.io/2.0.3/widgets.js">
+</script>
+
 
     <!-- Comment boxes under every player -->
     

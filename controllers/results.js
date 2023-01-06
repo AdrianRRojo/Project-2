@@ -40,7 +40,7 @@ router.get('/', async (req, res) => {
             .then(function (response) {
                 // console.log(response.data.response[0]);
                 console.log(response.data.response[0])
-                res.render('users/leagueResults.ejs', {playerSearch: response.data.response[0]})
+                res.render('users/leagueResults.ejs', {apiKey: apiKey, playerSearch: response.data.response[0]})
         }).catch(function (error) {
             console.error(error);
         });
