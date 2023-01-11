@@ -15,7 +15,6 @@ router.use(express.urlencoded({ extended: false }))
 router.use(cookieParser())
 
 router.get('/', async (req, res) => {
-
     try {
         // const options = {
         //     method: 'GET',
@@ -29,7 +28,7 @@ router.get('/', async (req, res) => {
         const options = {
             method: 'GET',
             url: 'https://api-football-v1.p.rapidapi.com/v3/leagues',
-            params: {name: `${req.query.playerSearch}`},
+            params: {name: `${req.query.leagueSearch}`},
             headers: {
               'X-RapidAPI-Key': apiKey,
               'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
@@ -39,12 +38,18 @@ router.get('/', async (req, res) => {
         axios.request(options)
             .then(function (response) {
                 // console.log(response.data.response[0]);
-                console.log(response.data.response[0])
-                res.render('users/leagueResults.ejs', {apiKey: apiKey, playerSearch: response.data.response[0]})
+                // console.log(response.data.response[0])
+                res.render('users/leagueResults.ejs', {apiKey: apiKey, leagueSearch: response.data.response[0]})
         }).catch(function (error) {
             console.error(error);
         });
         
+        console.log('LEAGUE SEARCH----', req.query.leagueSearch)
+        // const playerOptions = {
+        //     method: 'GET',
+        //     url: "https://v3.football.api-sports.io/players",
+        //     params: {league: `${req.query.leagueSearch}`}
+        // }
         
     } catch (error) {
         console.log(error)
