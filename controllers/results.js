@@ -40,21 +40,44 @@ router.get('/', async (req, res) => {
                 // console.log(response.data.response[0]);
                 // console.log(response.data.response[0])
                 res.render('users/leagueResults.ejs', {apiKey: apiKey, leagueSearch: response.data.response[0]})
+        
         }).catch(function (error) {
             console.error(error);
         });
         
-        console.log('LEAGUE SEARCH----', req.query.leagueSearch)
-        // const playerOptions = {
-        //     method: 'GET',
-        //     url: "https://v3.football.api-sports.io/players",
-        //     params: {league: `${req.query.leagueSearch}`}
-        // }
+        
         
     } catch (error) {
         console.log(error)
     }
 })
 
+router.get('/players', async (req, res) => {
+    try {
+            const playerOptions = {
+                method: 'GET',
+                url: "https://v3.football.api-sports.io/players",
+                params: {searchPlayers:`${req.query.searchPlayers}`, league: `${response.data.response[0].league.id}`},
+                headers: {
+                    'X-RapidAPI-Key': apiKey,
+                    'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                  }
+            }
+            axios.request(playerOptions)
+                .then(function(response){
+                    console.log(response)
+                })
+
+        
+        .catch(function (error) {
+            console.error(error);
+        });
+        
+        
+        
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 module.exports = router

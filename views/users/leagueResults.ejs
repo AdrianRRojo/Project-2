@@ -3,13 +3,15 @@
     <!-- console.log(`RESULTS PAGE - ${playerSearch.league.name}`)  -->
     
     <img class="float-start" src=<%=leagueSearch.league.logo %> alt='league logo'> </img>
-    <!-- <form>
-        <label for="playerName"> Search for a player in leagueSearch.league.name</label>
+    <form  method = "GET" class="d-flex" action = "/results/players">
+        <label for="searchPlayers"> Search for a player</label>
         <br>
-        <input type="text" id="playerName" name="playerName">
+        <input id = 'searchPlayers' name = 'searchPlayers' class="form-control me-2" type="search" placeholder="Find a player" aria-label="Search">
         &nbsp;
         <br>
-    </form> -->
+        <button class="btn btn-outline-danger" type="submit">Search</button>
+    </form>
+
     <div id="wg-api-football-standings"
     data-host="api-football-v1.p.rapidapi.com"
     data-key='<%= apiKey%>'
